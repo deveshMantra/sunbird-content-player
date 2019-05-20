@@ -88,7 +88,7 @@ var app = angular.module("genie-canvas", ["ionic", "ngCordova", "oc.lazyLoad"])
 		app.compileProvider = $compileProvider
 		console.log("AppConfig", AppConfig.whiteListUrl)
 		$sceDelegateProvider.resourceUrlWhitelist(AppConfig.whiteListUrl)
-	}).controller("BaseCtrl", function ($scope, $rootScope, $state, $ocLazyLoad, $stateParams, $compile, $templateCache, appConstants) {
+	}).controller("BaseCtrl", ['$scope', '$rootScope', '$state', '$ocLazyLoad', '$stateParams', '$compile', '$templateCache', 'appConstants' ,function ($scope, $rootScope, $state, $ocLazyLoad, $stateParams, $compile, $templateCache, appConstants) {
 		$scope.templates = []
 
 		function loadNgModules (templatePath, controllerPath, allowTemplateCache) {
@@ -165,7 +165,7 @@ var app = angular.module("genie-canvas", ["ionic", "ngCordova", "oc.lazyLoad"])
 				org.ekstep.contentrenderer.startGame(content.metadata)
 			}
 		}, this)
-	})
+	}])
 
 angular.module("org.ekstep.question", []).config(function ($sceDelegateProvider) {
 	$sceDelegateProvider.resourceUrlWhitelist(AppConfig.whiteListUrl)
