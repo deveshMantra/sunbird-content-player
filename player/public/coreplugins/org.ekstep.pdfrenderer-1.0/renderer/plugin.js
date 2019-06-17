@@ -212,12 +212,13 @@ org.ekstep.contentrenderer.baseLauncher.extend({
             pinchType = 'pinchOut';
         });
         hammerManager.on("pinchend", function (ev) {
-            if (pinchType === 'pinchIn' && previousScale >= 0.25) {
+            if (pinchType === 'pinchIn' && previousScale >= 0.50) {
                 previousScale = previousScale - 0.25;
-            } else if (pinchType === 'pinchOut' && previousScale <= 5.00) {
+                context.renderCurrentScaledPage();
+            } else if (pinchType === 'pinchOut' && previousScale <= 3) {
                 previousScale = previousScale + 0.25;
+                context.renderCurrentScaledPage();
             }
-            context.renderCurrentScaledPage();
             pinchType = undefined;
         }); 
 
