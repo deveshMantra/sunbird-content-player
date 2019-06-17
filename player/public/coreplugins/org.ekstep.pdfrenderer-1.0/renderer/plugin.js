@@ -200,7 +200,9 @@ org.ekstep.contentrenderer.baseLauncher.extend({
 
         document.getElementById(this.manifest.id).style.overflow = "auto";
 
-        var hammerManager = new Hammer(pdfContents);
+        var hammerManager = new Hammer(pdfContents, {
+            touchAction: "pan-x pan-y"
+        });
         hammerManager.get('pinch').set({ enable: true });
 
         hammerManager.on("pinchin", function (ev) {
